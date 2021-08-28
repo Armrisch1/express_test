@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+a{
+    text-decoration: none;
+    padding: 10px;
+    background: green;
+    color: white;
+}
