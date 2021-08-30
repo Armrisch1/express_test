@@ -1,4 +1,4 @@
-export function setRoutes(app){
+export function setRoutes(){
 
     app.set('view engine', 'ejs');
     app.set('views', 'templates');

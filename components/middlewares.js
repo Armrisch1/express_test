@@ -1,7 +1,7 @@
 import {requestTime} from "../middlewares/time.js";
 import {logger} from "../middlewares/logger.js";
 
-export function setMiddlewares(app){
+export function setMiddlewares(){
     app.use((req, res, next) => {
         console.log(req.url);
         next();
