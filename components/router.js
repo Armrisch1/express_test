@@ -1,27 +1,28 @@
-export function setRoutes(){
+const UserController = require('../controllers/UserController.js');
+const HomeController = require('../controllers/HomeController.js');
+const CabinetController = require('../controllers/CabinetController.js');
 
-    app.set('view engine', 'ejs');
-    app.set('views', 'templates');
+// Ejs config
+app.set('view engine', 'ejs');
+app.set('views', 'templates');
 
-    app.use(express.static(PATH.resolve(DIRNAME, 'public')));
+// Assets folder
+app.use(express.static(PATH.resolve(DIRNAME, 'public')));
 
-    app.get('/', (req, res) => {
-        res.render('index', {title : 'Home Page'});
-    });
+// Home Controller
+app.get('/', HomeController.index);
+app.get('/contacts', HomeController.contacts);
+app.get('/about', HomeController.about);
+app.get('/download', HomeController.download);
 
-    app.get('/contacts', (req,res) => {
-        res.render('contacts', {title : 'Contacts'});
-    });
+// User Controller
+app.get('/register', UserController.register);
+app.get('/login', UserController.login);
 
-    app.get('/about', (req,res) => {
-        res.render('contacts', {title : 'About'});
-    });
+// Cabinet Controller
+app.get('/cabinet', CabinetController.index);
 
-    app.get('/download', (req,res) => {
-        res.download(PATH.resolve(DIRNAME, 'public/images','test.png'));
-    });
+// POST
+app.post('/register', UserController.registerValidation, UserController.store);
+app.post('/login', UserController.loginValidation, UserController.auth);
 
-    // app.get('/about', (req,res) => {
-    //     res.sendFile(path.resolve(DIRNAME, 'public', 'about.html'));
-    // });
-}

@@ -1,7 +1,11 @@
-import colors from "colors";
+const colors = require('colors');
 
-export function logger(req, res, next){
+function logger(req, res, next){
     console.log(colors.bgYellow.black(`Request time is : ${req.requestTime}`));
 
     next();
+}
+
+module.exports = {
+    logger : logger
 }
